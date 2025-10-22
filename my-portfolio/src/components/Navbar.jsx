@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import profilePhoto from '../assets/portfolio.png' // <-- import your image
+import profilePhoto from '../assets/portfolio.png'
 
 const Navbar = ({ activeSection }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -22,31 +22,31 @@ const Navbar = ({ activeSection }) => {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-blue-800 bg-opacity-95 z-50 shadow-md backdrop-blur-sm">
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         {/* Profile Section */}
         <div className="flex items-center space-x-3">
           <img
             src={profilePhoto}
             alt="Profile"
-            className="w-12 h-12 rounded-full object-cover border-2 border-white"
+            className="w-11 h-11 rounded-full object-cover border-2 border-white"
           />
           <div>
-            <h1 className="text-xl font-bold text-white">Andrew Mutua</h1>
-            <p className="text-sm font-bold text-blue-200">Software Developer</p>
+            <h1 className="text-lg font-bold text-white">Andrew Mutua</h1>
+            <p className="text-xs font-bold text-blue-200">Software Developer</p>
           </div>
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className={`nav-link ${
+              className={`text-base font-bold tracking-wide ${
                 activeSection === link.href.substring(1)
                   ? 'text-blue-200'
                   : 'text-white hover:text-blue-300'
-              } transition-colors duration-300 relative py-2`}
+              } transition-colors duration-300 relative py-1`}
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection(link.href)
@@ -85,16 +85,16 @@ const Navbar = ({ activeSection }) => {
           isMobileMenuOpen ? 'block' : 'hidden'
         }`}
       >
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-3">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className={`${
+              className={`text-base font-bold tracking-wide ${
                 activeSection === link.href.substring(1)
                   ? 'text-blue-200'
                   : 'text-white'
-              } hover:text-blue-300 transition-colors duration-300 py-2`}
+              } hover:text-blue-300 transition-colors duration-300 py-1`}
               onClick={(e) => {
                 e.preventDefault()
                 scrollToSection(link.href)

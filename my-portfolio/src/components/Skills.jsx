@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
 
+// Import official icons from react-icons
+import { FaGitAlt, FaGithub, FaDocker } from 'react-icons/fa'
+import { SiFigma, SiPostman } from 'react-icons/si'
+import { VscVscode } from 'react-icons/vsc' // ✅ correct VS Code icon
+
 const Skills = () => {
   const [animatedSkills, setAnimatedSkills] = useState([])
 
@@ -20,13 +25,14 @@ const Skills = () => {
     { name: 'Project Management', level: 80, color: 'bg-blue-500' }
   ]
 
+  // ✅ Tools & Technologies (real official icons)
   const tools = [
-    { name: 'Git', icon: '🔧' },
-    { name: 'VS Code', icon: '💻' },
-    { name: 'Figma', icon: '🎨' },
-    { name: 'Docker', icon: '🐳' },
-    { name: 'GitHub', icon: '☁️' },
-    { name: 'Postman', icon: '📬' }
+    { name: 'Git', icon: <FaGitAlt className="text-orange-500 text-4xl" /> },
+    { name: 'VS Code', icon: <VscVscode className="text-blue-600 text-4xl" /> },
+    { name: 'Figma', icon: <SiFigma className="text-purple-600 text-4xl" /> },
+    { name: 'Docker', icon: <FaDocker className="text-blue-500 text-4xl" /> },
+    { name: 'GitHub', icon: <FaGithub className="text-gray-800 text-4xl" /> },
+    { name: 'Postman', icon: <SiPostman className="text-orange-500 text-4xl" /> }
   ]
 
   useEffect(() => {
@@ -56,6 +62,7 @@ const Skills = () => {
           My Skills
         </h2>
 
+        {/* Technical & Professional Skills */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           {/* Technical Skills */}
           <div>
@@ -121,9 +128,9 @@ const Skills = () => {
             {tools.map((tool) => (
               <div
                 key={tool.name}
-                className="bg-white p-4 rounded-lg flex flex-col items-center justify-center hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 group shadow-md"
+                className="bg-white p-6 rounded-lg flex flex-col items-center justify-center hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 group shadow-md"
               >
-                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
+                <div className="mb-2 group-hover:scale-110 transition-transform duration-300">
                   {tool.icon}
                 </div>
                 <span className="text-sm text-gray-700 font-medium">{tool.name}</span>
