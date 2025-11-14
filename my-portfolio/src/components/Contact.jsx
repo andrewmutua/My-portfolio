@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { MapPin, Mail, Phone, Linkedin, Facebook, Instagram } from 'lucide-react'
 import { FaWhatsapp } from 'react-icons/fa'
 import emailjs from '@emailjs/browser'
+import  {displayToast} from '../utils/DisplayToast'
 
 const Contact = () => {
   const form = useRef()
@@ -13,6 +14,8 @@ const Contact = () => {
     message: ''
   })
 
+  const [isSending, setIsSending] = useState(false)
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -22,21 +25,25 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setIsSending(true)
 
     emailjs.sendForm(
-      'service_vq8n26r',       // ✅ Your Service ID
-      'template_7nzp3li',      // ✅ Your Template ID
+      'service_vq8n26r',       // Your Service ID
+      'template_7nzp3li',      // Your Template ID
       form.current,            // Reference to the form
-      'tl7Ix-yi-UGGHkLam'     // ✅ Your Public Key
+      'tl7Ix-yi-UGGHkLam'     // Your Public Key
     )
     .then((result) => {
       console.log('✅ Email sent successfully:', result.text)
-      alert('Message sent successfully! I will get back to you soon.')
+      displayToast('success', 'Message sent successfully! I will get back to you soon.')
       setFormData({ name: '', email: '', subject: '', message: '' })
     })
     .catch((error) => {
       console.error('❌ Error sending email:', error)
-      alert('Failed to send message. Please try again later.')
+      displayToast('error', 'Failed to send message. Please try again later.')
+    })
+    .finally(() => {
+      setIsSending(false)
     })
   }
 
@@ -175,11 +182,43 @@ const Contact = () => {
                 ></textarea>
               </div>
 
+              {/* Button with spinner */}
               <button
                 type="submit"
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium px-6 py-4 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white"
+                disabled={isSending}
+                className={`w-full font-medium px-6 py-4 rounded-lg transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white ${
+                  isSending
+                    ? 'bg-blue-300 cursor-not-allowed text-white'
+                    : 'bg-blue-500 hover:bg-blue-600 text-white hover:scale-105'
+                }`}
               >
-                Send Message
+                {isSending ? (
+                  <span className="flex items-center justify-center space-x-2">
+                    <svg
+                      className="animate-spin h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v8z"
+                      ></path>
+                    </svg>
+                    <span>Sending...</span>
+                  </span>
+                ) : (
+                  'Send Message'
+                )}
               </button>
             </form>
           </div>

@@ -91,10 +91,10 @@ export default function Home() {
               <span className="mr-2">I'm a</span>
               <ReactTyped
                 strings={[
-                  "Software Developer",
-                  "Web Designer",
-                  "Problem Solver",
-                  "Tech Enthusiast",
+                  "Software Developer...",
+                  "Web Designer...",
+                  "Problem Solver...",
+                  "Tech Enthusiast...",
                 ]}
                 typeSpeed={60}
                 backSpeed={35}
@@ -167,29 +167,6 @@ export default function Home() {
             >
               Contact Me
             </motion.a>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            className="mt-14 flex flex-col items-center gap-2 text-gray-500"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 3, duration: 1 }}
-          >
-            <span className="text-xs font-mono tracking-wide">
-              Scroll to explore
-            </span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-5 h-9 border-2 border-gray-400 rounded-full flex justify-center"
-            >
-              <motion.div
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="w-1 h-3 bg-blue-600 rounded-full mt-2"
-              />
-            </motion.div>
           </motion.div>
         </div>
       </motion.div>
