@@ -1,4 +1,4 @@
-import { Briefcase, FolderGit2, Users, GraduationCap, Code2, Globe, Award, Clock } from "lucide-react";
+import { Briefcase, Users, GraduationCap, Code2 } from "lucide-react";
 import profilePhoto from "../assets/portfolio.png";
 
 const About = () => {
@@ -24,7 +24,7 @@ const About = () => {
     { 
       icon: <GraduationCap className="w-8 h-8 text-orange-600 mx-auto" />, 
       label: "Education", 
-      value: "Information Technology", // ✅ Updated here
+      value: "Information Technology",
       description: "Strong academic background"
     },
   ];
@@ -40,11 +40,11 @@ const About = () => {
           {/* Profile Image */}
           <div className="lg:w-1/3 flex justify-center">
             <div className="relative w-64 h-64 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-1 shadow-lg overflow-hidden">
-              <div className="w-full h-full bg-[#EFF6FF] rounded-full overflow-hidden">
+              <div className="w-full h-full bg-[#EFF6FF] rounded-full overflow-hidden p-1 flex items-center justify-center">
                 <img
                   src={profilePhoto}
                   alt="Andrew Mutua"
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-contain object-center rounded-full"
                 />
               </div>
               <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-[#EFF6FF]"></div>

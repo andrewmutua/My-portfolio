@@ -28,13 +28,12 @@ const Contact = () => {
     setIsSending(true)
 
     emailjs.sendForm(
-      'service_vq8n26r',       // Your Service ID
+      'service_1vnadz3',       // Your Service ID
       'template_7nzp3li',      // Your Template ID
       form.current,            // Reference to the form
       'tl7Ix-yi-UGGHkLam'     // Your Public Key
     )
     .then((result) => {
-      console.log('✅ Email sent successfully:', result.text)
       displayToast('success', 'Message sent successfully! I will get back to you soon.')
       setFormData({ name: '', email: '', subject: '', message: '' })
     })

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import profilePhoto from '../assets/portfolio.png'
+import profilePhoto from '../assets/portfolio2.png'
 
 const Navbar = ({ activeSection }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -25,11 +25,11 @@ const Navbar = ({ activeSection }) => {
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         {/* Profile Section */}
         <div className="flex items-center space-x-3">
-          <img
-            src={profilePhoto}
-            alt="Profile"
-            className="w-11 h-11 rounded-full object-cover border-2 border-white"
-          />
+           <img
+              src={profilePhoto}
+              alt="Profile"
+              className="w-11 h-11 rounded-full object-cover object-top border-2 border-white"
+            />
           <div>
             <h1 className="text-lg font-bold text-white">Andrew Mutua</h1>
             <p className="text-xs font-bold text-blue-200">Software Developer</p>
