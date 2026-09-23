@@ -1,5 +1,5 @@
 import { Briefcase, Users, GraduationCap, Code2 } from "lucide-react";
-import profilePhoto from "../assets/portfolio.png";
+import profilePhoto from "../assets/portfolio.jpg";
 
 const About = () => {
   const stats = [

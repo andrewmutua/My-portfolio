@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import profilePhoto from '../assets/portfolio2.png'
+import profilePhoto from '../assets/portfolio.jpg'
 
 const Navbar = ({ activeSection }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
